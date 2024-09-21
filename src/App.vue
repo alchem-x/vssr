@@ -1,12 +1,14 @@
 <template>
-  <div>VSSR: {{ store.data }}</div>
+  <div class="app-container">
+    App Data: {{ store.data }}
+  </div>
 </template>
 
 <script setup>
 import { onServerPrefetch, useSSRContext } from 'vue'
-import { useStore } from '@/store.js'
+import { useAppStore } from '@/store.js'
 
-const store = useStore()
+const store = useAppStore()
 const ssrContext = useSSRContext()
 
 onServerPrefetch(async () => {
@@ -14,3 +16,9 @@ onServerPrefetch(async () => {
   ssrContext.data = store.data
 })
 </script>
+
+<style>
+.app-container {
+  font-size: 1.5rem;
+}
+</style>

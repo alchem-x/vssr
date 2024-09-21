@@ -8,15 +8,15 @@ const template = await readFile(resolve(import.meta.dirname, '../dist/index.html
 
 const { createApp } = clientApp
 
-const app = express()
-
-app.get('/', async (req, res) => {
-    const app = createApp()
+async function onSSR(req, res) {
     const __INIT_DATA__ = {}
-    const html = await renderToString(app, __INIT_DATA__)
+    const html = await renderToString(createApp(), __INIT_DATA__)
     const script = `const __INIT_DATA__ = ${JSON.stringify(__INIT_DATA__)}`
     res.send(template.replace('/* SCRIPT */', script).replace('<!-- HTML -->', html))
-})
+}
+
+const app = express()
+app.get('/', onSSR)
 app.use(express.static('dist'))
 app.listen(3000, () => {
     console.log('listen 3000')

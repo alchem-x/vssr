@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useStore = defineStore('vssr', {
+export const useAppStore = defineStore('app', {
     state() {
         if (typeof __INIT_DATA__ !== 'undefined') {
             return {

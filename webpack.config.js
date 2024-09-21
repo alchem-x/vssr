@@ -3,6 +3,7 @@ import { VueLoaderPlugin } from 'vue-loader'
 import TerserPlugin from 'terser-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export default {
     mode: 'development',
@@ -17,6 +18,10 @@ export default {
                 use: ['vue-loader'],
             },
             {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
                 resourceQuery: /^((?!raw).)*$/,
                 test: /\.jsx?$/i,
                 use: [{
@@ -26,7 +31,6 @@ export default {
                             '@babel/preset-env',
                         ],
                         plugins: [
-                            '@emotion',
                             '@vue/babel-plugin-jsx',
                         ],
                     },
@@ -41,6 +45,7 @@ export default {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new MiniCssExtractPlugin(),
         new HtmlPlugin({
             template: resolve(import.meta.dirname, 'src/index.html'),
             hash: true,
