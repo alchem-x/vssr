@@ -17,7 +17,7 @@ onServerPrefetch(async () => {
 })
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .app-container {
   font-size: 1.5rem;
 }
