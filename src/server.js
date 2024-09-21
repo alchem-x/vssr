@@ -19,5 +19,5 @@ const app = express()
 app.get('/', onSSR)
 app.use(express.static('dist'))
 app.listen(3000, () => {
-    console.log('listen 3000')
+    console.log('Serving: http://localhost:3000')
 })

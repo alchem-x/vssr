@@ -22,6 +22,10 @@ export default {
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
+                test: /\.less$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+            },
+            {
                 resourceQuery: /^((?!raw).)*$/,
                 test: /\.jsx?$/i,
                 use: [{
