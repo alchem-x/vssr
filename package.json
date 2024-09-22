@@ -1,11 +1,11 @@
 {
   "name": "vssr",
   "version": "1.0.0",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack --mode=production",
-    "server": "pnpm run build && node src/server.js"
+    "server": "pnpm run build && PORT=3030 node src/server.js"
   },
   "type": "module",
   "keywords": [],
@@ -26,6 +26,7 @@
     "terser-webpack-plugin": "^5.3.10",
     "vue": "^3.5.6",
     "vue-loader": "^17.4.2",
+    "vue-router": "^4.4.5",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"

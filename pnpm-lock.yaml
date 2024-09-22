@@ -47,6 +47,9 @@ importers:
       vue-loader:
         specifier: ^17.4.2
         version: 17.4.2(vue@3.5.6)(webpack@5.94.0(webpack-cli@5.1.4))
+      vue-router:
+        specifier: ^4.4.5
+        version: 4.4.5(vue@3.5.6)
       webpack:
         specifier: ^5.94.0
         version: 5.94.0(webpack-cli@5.1.4)
@@ -2348,6 +2351,11 @@ packages:
         optional: true
       vue:
         optional: true
+
+  vue-router@4.4.5:
+    resolution: {integrity: sha512-4fKZygS8cH1yCyuabAXGUAsyi1b2/o/OKgu/RUb+znIYOxPRxdkytJEx+0wGcpBE1pX6vUgh5jwWOKRGvuA/7Q==}
+    peerDependencies:
+      vue: ^3.2.0
 
   vue@3.5.6:
     resolution: {integrity: sha512-zv+20E2VIYbcJOzJPUWp03NOGFhMmpCKOfSxVTmCYyYFFko48H9tmuQFzYj7tu4qX1AeXlp9DmhIP89/sSxxhw==}
@@ -4953,6 +4961,11 @@ snapshots:
       watchpack: 2.4.2
       webpack: 5.94.0(webpack-cli@5.1.4)
     optionalDependencies:
+      vue: 3.5.6
+
+  vue-router@4.4.5(vue@3.5.6):
+    dependencies:
+      '@vue/devtools-api': 6.6.4
       vue: 3.5.6
 
   vue@3.5.6:

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { isBrowser } from '@/utils.js'
 
 export const useAppStore = defineStore('app', {
     state() {
@@ -9,6 +10,7 @@ export const useAppStore = defineStore('app', {
         } else {
             return {
                 data: '',
+                isBrowser,
             }
         }
     },

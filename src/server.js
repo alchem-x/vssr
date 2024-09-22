@@ -9,7 +9,7 @@ const template = await readFile(resolve(import.meta.dirname, '../dist/index.html
 const { createApp } = clientApp
 
 async function onSSR(req, res) {
-    const __INIT_DATA__ = {}
+    const __INIT_DATA__ = { requestPath: req.path }
     const html = await renderToString(createApp(), __INIT_DATA__)
     const script = `const __INIT_DATA__ = ${JSON.stringify(__INIT_DATA__)}`
     res.send(template.replace('/* SCRIPT */', script).replace('<!-- HTML -->', html))
@@ -18,6 +18,9 @@ async function onSSR(req, res) {
 const app = express()
 app.get('/', onSSR)
 app.use(express.static('dist'))
-app.listen(3000, () => {
-    console.log('Serving: http://localhost:3000')
+app.get('/*', onSSR)
+
+const PORT = process.env.PORT ?? 3000
+app.listen(PORT, () => {
+    console.log(`Serving: http://localhost:${PORT}`)
 })

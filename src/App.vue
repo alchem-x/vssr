@@ -1,24 +1,19 @@
 <template>
   <div class="app-container">
-    App Data: {{ store.data }}
+    <IsomorphicView/>
   </div>
 </template>
 
 <script setup>
-import { onServerPrefetch, useSSRContext } from 'vue'
-import { useAppStore } from '@/store.js'
-
-const store = useAppStore()
-const ssrContext = useSSRContext()
-
-onServerPrefetch(async () => {
-  await store.fetchData()
-  ssrContext.data = store.data
-})
+import IsomorphicView from './IsomorphicView.jsx'
 </script>
 
 <style lang="less">
 .app-container {
-  font-size: 1.5rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1000px;
+  min-height: 100vh;
 }
 </style>
